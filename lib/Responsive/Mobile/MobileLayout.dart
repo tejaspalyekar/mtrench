@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mtrench/Responsive/Mobile/Screens/ProjectManagement.dart';
+import 'package:mtrench/Screens/ProjectManagement.dart';
+import 'package:mtrench/widgets/MenuItem.dart';
 import 'package:mtrench/widgets/drawer.dart';
 
 class MobileLayout extends StatefulWidget {
@@ -84,45 +85,59 @@ class _MobileState extends State<MobileLayout> {
               );
             },
           ),
-          backgroundColor: Color.fromARGB(255, 255, 255, 255)),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255)),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 205, 215, 223),
-              ),
-              child: Column(
-                children: [
-                  Image.asset(
-                    "assets/ProfilePic.png",
-                    width: 90,
-                    height: 85,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(right: 50, left: 50),
-                    width: 70,
-                    child: DropdownButton(
-                      isExpanded: true,
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      icon: const Icon(Icons.arrow_right),
-                      focusColor: const Color.fromARGB(255, 255, 255, 255),
-                      value: profilevalue,
-                      underline: const Text(""),
-                      items: menuItems,
-                      onChanged: (value) {},
+            Container(
+              width: double.infinity,
+              child: DrawerHeader(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 205, 215, 223),
+                ),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/ProfilePic.png",
+                      width: 90,
+                      height: 85,
                     ),
-                  )
-                ],
+                    Container(
+                      margin: const EdgeInsets.only(right: 50, left: 50),
+                      width: 70,
+                      child: DropdownButton(
+                        isExpanded: true,
+                        borderRadius: const BorderRadius.all(Radius.circular(5)),
+                        icon: const Icon(Icons.arrow_right),
+                        focusColor: const Color.fromARGB(255, 255, 255, 255),
+                        value: profilevalue,
+                        underline: const Text(""),
+                        items: menuItems,
+                        onChanged: (value) {},
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-            SingleChildScrollView(child: MobileDrawer(
-              changeCurrentScreen: (Widget screen) {
-                Navigator.pop(context);
-                changeCurrentScreen(screen);
-              },
-            ))
+            Expanded(
+              child: Container(
+                child: ListView.builder(
+                  itemCount: 12,
+                  itemBuilder: (context, index) {
+                    return Menu(
+                      index: index,
+                      rerender: () {
+                        setState(() {
+                          print("set state in web btn");
+                        });
+                      },
+                    );
+                  },
+                ),
+              ),
+            )
           ],
         ),
       ),

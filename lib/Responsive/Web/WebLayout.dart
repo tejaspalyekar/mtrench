@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtrench/Screens/ProjectManagement.dart';
 import 'package:mtrench/widgets/MenuItem.dart';
 
 class WebLayout extends StatefulWidget {
@@ -40,6 +41,8 @@ class _WebScreenState extends State<WebLayout> {
   ];
   String profilevalue = "Admin";
   String data = "";
+  Widget currscreen = ProjectManagement();
+  int curr = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -155,13 +158,10 @@ class _WebScreenState extends State<WebLayout> {
                   itemBuilder: (context, index) {
                     return Menu(
                       index: index,
-                      rerender: (int idx) {
-                        print("web");
-                        Menu(
-                          index: idx,
-                        );
+                      rerender: () {
                         setState(() {
-                          data = "okkkk done";
+                          curr = curr + 1;
+                          print("set state in web btn");
                         });
                       },
                     );
@@ -172,7 +172,7 @@ class _WebScreenState extends State<WebLayout> {
             Container(
               padding: const EdgeInsets.only(
                   top: 40, left: 20, right: 20, bottom: 20),
-              child: Text(data),
+              child: Text('$curr'),
             )
           ],
         ),
