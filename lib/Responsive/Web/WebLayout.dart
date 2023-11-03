@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mtrench/widgets/MenuItem.dart';
 
-class WebScreen extends StatefulWidget {
-  const WebScreen({super.key});
+class WebLayout extends StatefulWidget {
+  const WebLayout({super.key});
 
   @override
-  State<WebScreen> createState() => _WebScreenState();
+  State<WebLayout> createState() => _WebScreenState();
 }
 
-class _WebScreenState extends State<WebScreen> {
+class _WebScreenState extends State<WebLayout> {
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(
         value: "Admin",

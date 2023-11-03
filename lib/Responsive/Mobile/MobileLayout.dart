@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mtrench/Responsive/Mobile/Screens/ProjectManagement.dart';
 import 'package:mtrench/widgets/drawer.dart';
 
-class Mobile extends StatefulWidget {
-  const Mobile({super.key});
+class MobileLayout extends StatefulWidget {
+  const MobileLayout({super.key});
 
   @override
-  State<Mobile> createState() => _MobileState();
+  State<MobileLayout> createState() => _MobileState();
 }
 
-class _MobileState extends State<Mobile> {
+class _MobileState extends State<MobileLayout> {
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(
         value: "Admin",

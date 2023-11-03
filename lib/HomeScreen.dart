@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mtrench/Responsive/Mobile/Mobile.dart';
-import 'package:mtrench/Responsive/Web/WebScreen.dart';
+import 'package:mtrench/Responsive/Mobile/MobileLayout.dart';
+import 'package:mtrench/Responsive/Web/WebLayout.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,8 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Widget webscreen = WebScreen();
-  Widget mobilescreen = Mobile();
+  Widget webscreen = WebLayout();
+  Widget mobilescreen = MobileLayout();
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
