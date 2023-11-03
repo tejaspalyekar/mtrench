@@ -1,5 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:mtrench/DataModel/menuItems.dart';
+import 'package:mtrench/Screens/Attendance.dart';
+import 'package:mtrench/Screens/CalendarSCreen.dart';
+import 'package:mtrench/Screens/ChatRoom.dart';
+import 'package:mtrench/Screens/Dashboard.dart';
+import 'package:mtrench/Screens/Employee.dart';
+import 'package:mtrench/Screens/Help.dart';
+import 'package:mtrench/Screens/Notifications.dart';
+import 'package:mtrench/Screens/Productivity.dart';
 import 'package:mtrench/Screens/ProjectManagement.dart';
+import 'package:mtrench/Screens/Setting.dart';
+import 'package:mtrench/Screens/Signout.dart';
+import 'package:mtrench/Screens/Team.dart';
+import 'package:mtrench/Screens/employeeMonitor.dart';
 import 'package:mtrench/widgets/MenuItem.dart';
 
 class WebLayout extends StatefulWidget {
@@ -41,8 +54,51 @@ class _WebScreenState extends State<WebLayout> {
   ];
   String profilevalue = "Admin";
   String data = "";
-  Widget currscreen = ProjectManagement();
-  int curr = 0;
+  Widget currscreen = const ProjectManagement();
+
+  void changescreen() {
+    setState(() {
+      switch (prevbtn) {
+        case 0:
+          currscreen = const Dashboard();
+          break;
+        case 1:
+          currscreen = const Employeemonitor();
+          break;
+        case 2:
+          currscreen = const Productivity();
+          break;
+        case 3:
+          currscreen = const Employee();
+          break;
+        case 4:
+          currscreen = const TeamScreen();
+          break;
+        case 5:
+          currscreen = const AttendanceScreen();
+          break;
+        case 6:
+          currscreen = const ProjectManagement();
+          break;
+        case 7:
+          currscreen = const ChatRoomScreen();
+          break;
+        case 8:
+          currscreen = const CalScreen();
+          break;
+        case 9:
+          currscreen = const SettingScreen();
+          break;
+        case 10:
+          currscreen = const HelpScreen();
+          break;
+        case 11:
+          currscreen = const Signout();
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -88,14 +144,17 @@ class _WebScreenState extends State<WebLayout> {
                   IconButton(
                       splashRadius: 20,
                       iconSize: 30,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Notifications(),
+                        ));
+                      },
                       icon: Container(
                           width: 28,
                           height: 28,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color:
-                                      const Color.fromARGB(255, 55, 58, 255)),
+                                  color: const Color.fromARGB(255, 0, 4, 255)),
                               borderRadius: BorderRadius.circular(100)),
                           child: Image.asset(
                             "assets/notification.png",
@@ -159,10 +218,7 @@ class _WebScreenState extends State<WebLayout> {
                     return Menu(
                       index: index,
                       rerender: () {
-                        setState(() {
-                          curr = curr + 1;
-                          print("set state in web btn");
-                        });
+                        changescreen();
                       },
                     );
                   },
@@ -172,7 +228,7 @@ class _WebScreenState extends State<WebLayout> {
             Container(
               padding: const EdgeInsets.only(
                   top: 40, left: 20, right: 20, bottom: 20),
-              child: Text('$curr'),
+              child: currscreen,
             )
           ],
         ),

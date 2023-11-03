@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mtrench/DataModel/menuItems.dart';
 
-//change to stateless afterwards
 class Menu extends StatefulWidget {
-  Menu({super.key, required this.index, this.rerender, this.drawerRerender});
+  Menu({super.key, required this.index, this.rerender});
   int index;
   Function? rerender;
-  Function? drawerRerender;
+
   @override
   State<Menu> createState() => _MenuState();
 }
@@ -16,18 +15,20 @@ class _MenuState extends State<Menu> {
   Color defaulttitleColor = Colors.black;
   late Color borderColor;
   bool btncheckStatus = false;
-
+  bool hover = false;
   @override
   Widget build(BuildContext context) {
+          
     if (widget.index == prevbtn) {
-      defaultBtnColor = const Color.fromARGB(230, 241, 241, 241);
-      borderColor = const Color.fromARGB(255, 43, 92, 252);
-      defaulttitleColor = const Color.fromARGB(255, 43, 92, 252);
+        defaultBtnColor = Color.fromARGB(230, 252, 250, 250);
+        borderColor = Color.fromARGB(255, 0, 4, 255);
+        defaulttitleColor = Color.fromARGB(255, 0, 4, 255);
     } else {
-      defaultBtnColor = const Color.fromARGB(255, 255, 255, 255);
-      borderColor = const Color.fromARGB(255, 255, 255, 255);
-      defaulttitleColor = Colors.black;
+        defaultBtnColor = hover == true? Color.fromARGB(172, 187, 187, 187) :const Color.fromARGB(255, 255, 255, 255);
+        borderColor = const Color.fromARGB(255, 255, 255, 255);
+        defaulttitleColor = Colors.black;
     }
+    
     return Column(
       children: [
         const SizedBox(
@@ -42,18 +43,17 @@ class _MenuState extends State<Menu> {
                   //hover
                   if (value) {
                     setState(() {
-                      defaultBtnColor =
-                          const Color.fromARGB(123, 209, 209, 209);
+                      hover = value;
                     });
                   }
                   if (!value) {
                     setState(() {
-                      defaultBtnColor =
-                          const Color.fromARGB(255, 255, 255, 255);
+                      hover = value;
                     });
                   }
                 },
                 style: ButtonStyle(
+                    
                     alignment: Alignment.centerLeft,
                     minimumSize: const MaterialStatePropertyAll(
                         Size(double.infinity, 40)),
@@ -61,13 +61,7 @@ class _MenuState extends State<Menu> {
                         BorderSide(color: borderColor)),
                     backgroundColor: MaterialStatePropertyAll(defaultBtnColor)),
                 onPressed: () {
-                  prevbtn = widget.index; //on pressed
-
-                  /*setState(() {
-                    defaultBtnColor = const Color.fromARGB(230, 230, 230, 230);
-                    borderColor = const Color.fromARGB(255, 43, 92, 252);
-                    defaulttitleColor = const Color.fromARGB(255, 43, 92, 252);
-                  });*/
+                  prevbtn = widget.index;
                   widget.rerender!();
                 },
                 icon: Icon(
