@@ -191,7 +191,11 @@ class _MobileState extends State<MobileLayout> {
                     index: index,
                     rerender: () {
                       changescreen();
-                      Scaffold.of(context).closeDrawer();
+                      if(prevbtn != 1 && prevbtn!= 6){
+                        Scaffold.of(context).closeDrawer();
+                      }
+                      
+                      
                     },
                   );
                 },

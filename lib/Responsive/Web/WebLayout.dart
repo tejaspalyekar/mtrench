@@ -108,27 +108,12 @@ class _WebScreenState extends State<WebLayout> {
             leading: Row(
               children: [
                 Container(
-                  width: 45,
+                  width: 70,
                 ),
                 Container(
-                  width: 155,
+                  width: 170,
                   padding: const EdgeInsets.only(right: 30),
-                  decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Color.fromARGB(255, 172, 172, 172),
-                          offset: Offset(5, 0),
-                          blurRadius: 1.0),
-                      BoxShadow(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          offset: Offset(-3, 0),
-                          blurRadius: 2.0),
-                      BoxShadow(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          offset: Offset(5, 0),
-                          blurRadius: 1.0)
-                    ],
-                  ),
+                  
                   child: Image.asset(
                     width: 100,
                     height: 80,
@@ -187,7 +172,7 @@ class _WebScreenState extends State<WebLayout> {
                 ],
               )
             ],
-            leadingWidth: 200,
+            leadingWidth: 250,
             backgroundColor: Colors.white),
         body: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,7 +194,7 @@ class _WebScreenState extends State<WebLayout> {
                       blurRadius: 1.0)
                 ],
               ),
-              width: 200,
+              width: 240,
               child: Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: ListView.builder(

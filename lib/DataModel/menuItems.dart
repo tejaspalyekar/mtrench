@@ -30,3 +30,5 @@ List iconsList = [
   Icons.logout,
 ];
 int prevbtn = 6;
+
+String submenu = "";
