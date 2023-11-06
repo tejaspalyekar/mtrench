@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return constraints.maxWidth > 600? webscreen:mobilescreen;
+        return constraints.maxWidth > 700? webscreen:mobilescreen;
       },
     );
   }

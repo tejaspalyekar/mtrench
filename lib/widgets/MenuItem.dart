@@ -21,8 +21,8 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     if (widget.index == prevbtn) {
       defaultBtnColor = const Color.fromARGB(230, 252, 250, 250);
-      borderColor = Color.fromARGB(255, 137, 139, 255);
-      defaulttitleColor = Color.fromARGB(255, 0, 26, 255);
+      borderColor = const Color.fromARGB(255, 137, 139, 255);
+      defaulttitleColor = const Color.fromARGB(255, 0, 26, 255);
     } else {
       defaultBtnColor = hover == true
           ? const Color.fromARGB(172, 187, 187, 187)
@@ -49,17 +49,19 @@ class _MenuState extends State<Menu> {
                     titlecolor: defaulttitleColor,
                     bordercolor: borderColor,
                     index: widget.index,
-                    rerender: () {
-                      widget.rerender!();
+                    rerender: (int val) {
+                      widget.rerender!(val);
                     },
+                    
                   )
                 : widget.index == 6
                     ? ReuseableExpansionTitle(
                         titlecolor: defaulttitleColor,
                         bordercolor: borderColor,
                         index: widget.index,
-                        rerender: () {
-                          widget.rerender!();
+                        rerender: (int val) {
+                          widget.rerender!(val);
+
                         },
                       )
                     : TextButton.icon(
@@ -85,18 +87,23 @@ class _MenuState extends State<Menu> {
                                 MaterialStatePropertyAll(defaultBtnColor)),
                         onPressed: () {
                           prevbtn = widget.index;
-                          widget.rerender!();
+                          widget.rerender!(0);
                         },
-                        icon: Icon(
+                        icon: Image.asset(
                           iconsList[widget.index],
                           color: defaulttitleColor,
-                          size: 15,
+                          width: 15,
+                          height: 15,
                         ),
-                        label: Text(
-                          titlesList[widget.index],
-                          style: TextStyle(
-                              color: defaulttitleColor,
-                              fontWeight: FontWeight.w500),
+
+                        label: Padding(
+                          padding: const EdgeInsets.only(left: 4,),
+                          child: Text(
+                            titlesList[widget.index],
+                            style: TextStyle(
+                                color: defaulttitleColor,
+                                fontWeight: FontWeight.w500),
+                          ),
                         )),
           ),
         ),

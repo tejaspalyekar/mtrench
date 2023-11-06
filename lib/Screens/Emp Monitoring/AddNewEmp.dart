@@ -5,6 +5,6 @@ class Employeemonitor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Employee monitor");
+    return const Text("Add New Employees");
   }
 }

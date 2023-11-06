@@ -24,9 +24,12 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
 
   List<List<String>> expansionpanelitems = [
     ["Add new Employee"],
-    ["Project", "Task", "My Task"]
+    ["Projects", "Task", "My Task"]
   ];
   late int itemidx;
+  bool hover = false;
+  Color onhover = const Color.fromARGB(146, 187, 187, 187);
+  Color backcolor = Colors.white;
   @override
   Widget build(BuildContext context) {
     if (widget.index == 1) {
@@ -35,20 +38,10 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
       itemidx = 1;
     }
     return ExpansionPanelList(
+      backcolor: backcolor,
       index: widget.index,
       dividerColor: Colors.white,
-      expansionCallback: (panelIndex, isExpanded) {
-        prevbtn = widget.index;
-        widget.rerender!();
-
-        setState(() {
-          if (expanded) {
-            expanded = false;
-          } else {
-            expanded = true;
-          }
-        });
-      },
+      expansionCallback: (panelIndex, isExpanded) {},
       elevation: 0,
       expandedHeaderPadding: EdgeInsets.zero,
       children: [
@@ -56,29 +49,58 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
             canTapOnHeader: true,
             headerBuilder: (context, isExpanded) {
               return Container(
-                padding: const EdgeInsets.only(left: 5),
                 decoration: BoxDecoration(
                   border: Border(
                       left: BorderSide(width: 1, color: widget.bordercolor),
                       bottom: BorderSide(width: 1, color: widget.bordercolor),
                       top: BorderSide(width: 1, color: widget.bordercolor)),
                 ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      Icon(
-                        iconsList[widget.index],
-                        color: widget.titlecolor,
-                        
-                        size: 15,
+                child: InkWell(
+                  onHover: (value) {
+                   
+                    setState(() {
+                      hover = value;
+                     value ? backcolor = onhover : backcolor = Colors.white;
+                    });
+                  },
+                  onTap: () {
+                    submenu = expansionpanelitems[itemidx][0];
+                    prevbtn = widget.index;
+                    widget.rerender!(3);
+                    setState(() {
+                      if (expanded) {
+                        expanded = false;
+                      } else {
+                        expanded = true;
+                      }
+                    });
+                  },
+                  child: Container(
+   
+                    color: hover ? onhover : Colors.white,
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 6),
+                            child: Image.asset(
+                              iconsList[widget.index],
+                              color: widget.titlecolor,
+                              width: 15,
+                              height: 15,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Text(titlesList[widget.index],
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: widget.titlecolor,
+                                  fontWeight: FontWeight.w500)),
+                        ],
                       ),
-                      const SizedBox(
-                        width: 9,
-                      ),
-                      Text(titlesList[widget.index],
-                          style: TextStyle(
-                              fontSize: 14, color: widget.titlecolor,fontWeight: FontWeight.w500)),
-                    ],
+                    ),
                   ),
                 ),
               );
@@ -86,8 +108,9 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
             body: Column(
               children: [
                 Container(
+                  
                   padding: const EdgeInsets.only(top: 10),
-                  height: itemidx == 0 ? 40 : 120,
+                  height: itemidx == 0 ? 60 : 110,
                   width: 200,
                   child: ScrollConfiguration(
                     behavior: ScrollConfiguration.of(context)
@@ -111,8 +134,9 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
                               label: Text(expansionpanelitems[itemidx][index],
                                   style: const TextStyle(color: Colors.black)),
                               onPressed: () {
+                                prevbtn = widget.index;
                                 submenu = expansionpanelitems[itemidx][index];
-                                widget.rerender!();
+                                widget.rerender!(1);
                               },
                               icon: const Icon(
                                 Icons.arrow_right,

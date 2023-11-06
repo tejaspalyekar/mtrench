@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:mtrench/DataModel/menuItems.dart';
-import 'package:mtrench/Screens/Attendance.dart';
-import 'package:mtrench/Screens/CalendarSCreen.dart';
-import 'package:mtrench/Screens/ChatRoom.dart';
-import 'package:mtrench/Screens/Dashboard.dart';
-import 'package:mtrench/Screens/Employee.dart';
-import 'package:mtrench/Screens/Help.dart';
+import 'package:mtrench/Screens/Menu/Attendance.dart';
+import 'package:mtrench/Screens/Menu/CalendarScreen.dart';
+import 'package:mtrench/Screens/Menu/ChatRoom.dart';
+import 'package:mtrench/Screens/Menu/Dashboard.dart';
+import 'package:mtrench/Screens/Menu/Employee.dart';
+import 'package:mtrench/Screens/Menu/Help.dart';
 import 'package:mtrench/Screens/Notifications.dart';
-import 'package:mtrench/Screens/Productivity.dart';
-import 'package:mtrench/Screens/ProjectManagement.dart';
-import 'package:mtrench/Screens/Setting.dart';
-import 'package:mtrench/Screens/Signout.dart';
-import 'package:mtrench/Screens/Team.dart';
-import 'package:mtrench/Screens/employeeMonitor.dart';
+import 'package:mtrench/Screens/Menu/Productivity.dart';
+import 'package:mtrench/Screens/Menu/ProjectManagement.dart';
+import 'package:mtrench/Screens/Menu/Setting.dart';
+import 'package:mtrench/Screens/Menu/Signout.dart';
+import 'package:mtrench/Screens/Menu/Team.dart';
+import 'package:mtrench/Screens/Emp%20Monitoring/AddNewEmp.dart';
+import 'package:mtrench/Screens/Project%20Management/MyTask.dart';
+import 'package:mtrench/Screens/Project%20Management/Projects.dart';
+import 'package:mtrench/Screens/Project%20Management/Task.dart';
 import 'package:mtrench/widgets/MenuItem.dart';
 
 class MobileLayout extends StatefulWidget {
@@ -55,7 +58,10 @@ class _MobileState extends State<MobileLayout> {
   String profilevalue = "Admin";
   String data = "";
   Widget currscreen = const ProjectManagement();
-
+  double onhover = 34;
+  double nohover = 30;
+  bool profilehover = false;
+  bool notifyhover = false;
   void changescreen() {
     setState(() {
       switch (prevbtn) {
@@ -79,12 +85,20 @@ class _MobileState extends State<MobileLayout> {
           break;
         case 6:
           currscreen = const ProjectManagement();
+
+          if (submenu == "Projects") {
+            currscreen = const ProjectsScreen();
+          } else if (submenu == "Task") {
+            currscreen = TaskScreen();
+          } else {
+            currscreen = MyTaskScreen();
+          }
           break;
         case 7:
           currscreen = const ChatRoomScreen();
           break;
         case 8:
-          currscreen = const CalScreen();
+          currscreen = const CalScreens();
           break;
         case 9:
           currscreen = const SettingScreen();
@@ -108,19 +122,24 @@ class _MobileState extends State<MobileLayout> {
               padding: const EdgeInsets.only(right: 20),
               child: IconButton(
                   splashRadius: 20,
-                  iconSize: 30,
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Notifications(),));
-                  },
-                  icon: Container(
-                      width: 28,
-                      height: 28,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromARGB(255, 0, 4, 255)),
-                          borderRadius: BorderRadius.circular(100)),
+                  iconSize: 40,
+                  onPressed: () {},
+                  icon: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Notifications(),
+                        ));
+                      },
+                      mouseCursor: SystemMouseCursors.click,
+                      onHover: (value) {
+                        setState(() {
+                          notifyhover = value;
+                        });
+                      },
                       child: Image.asset(
-                        "assets/notification.png",
+                        "assets/Notification.png",
+                        width: notifyhover ? onhover : nohover,
+                        height: notifyhover ? onhover : nohover,
                       ))),
             ),
           ],
@@ -137,7 +156,8 @@ class _MobileState extends State<MobileLayout> {
             builder: (BuildContext context) {
               return IconButton(
                 icon: Image.asset("assets/menu.png",
-                    fit: BoxFit.contain,
+                    width: 30,
+                    height: 30,
                     color: const Color.fromARGB(255, 0, 4, 255)),
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
@@ -189,12 +209,14 @@ class _MobileState extends State<MobileLayout> {
                 itemBuilder: (context, index) {
                   return Menu(
                     index: index,
-                    rerender: () {
+                    rerender: (int val) {
                       changescreen();
-                      if(prevbtn != 1 && prevbtn!= 6){
+                      if (prevbtn != 1 && prevbtn != 6) {
                         Scaffold.of(context).closeDrawer();
                       }
-                      
+                      if(val == 1){
+                        Scaffold.of(context).closeDrawer();
+                      }
                       
                     },
                   );
@@ -204,12 +226,14 @@ class _MobileState extends State<MobileLayout> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          color: Colors.amber,
-          width: 500,
-          child: currscreen,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            padding: EdgeInsets.all(10),
+            width: double.infinity,
+            child: currscreen,
+          ),
         ),
       ),
     );
