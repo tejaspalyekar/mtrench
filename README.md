@@ -42,8 +42,5 @@ To ensure the responsiveness and interactivity of the Flutter UI, test it on var
 
 ## Screenshots and Video
 
-For evaluation purposes, capture screenshots or record a video demonstrating the responsiveness and interactivity of your Flutter UI compared to the Figma design. Include these files in your GitHub repository.
 
----
 
-Feel free to use and customize this README as needed for your project. Good luck with your Flutter UI task!
