@@ -1,4 +1,4 @@
-Certainly! Here's a simplified README file for your GitHub repository:
+
 
 ---
 
