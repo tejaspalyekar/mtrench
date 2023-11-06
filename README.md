@@ -1,7 +1,7 @@
 
 # Mtrench Flutter UI
 
-This project replicates a responsive Flutter user interface based on a Figma design for the Mtrench job application.
+This project replicates a responsive Flutter user interface based on a Figma design for the Mtrench internship application.
 
 ## Screenshots and Video
 Task video and screenshots are uploaded in a folder name "Task Video & Screen Shots" 
