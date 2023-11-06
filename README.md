@@ -6,6 +6,9 @@
 
 This project replicates a responsive Flutter user interface based on a Figma design for the Mtrench job application.
 
+## Screenshots and Video
+Task video and screenshots are uploaded in a folder name "Task Video & Screen Shots"
+
 ## How to Run
 
 Follow these steps to run the Flutter application:
@@ -39,8 +42,3 @@ All project dependencies are listed in the `pubspec.yaml` file. Running `flutter
 ## Testing Responsiveness and Interactivity
 
 To ensure the responsiveness and interactivity of the Flutter UI, test it on various screen sizes and orientations using an emulator or a physical device.
-
-## Screenshots and Video
-
-
-
