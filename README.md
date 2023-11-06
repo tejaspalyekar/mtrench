@@ -6,8 +6,8 @@ This project replicates a responsive Flutter user interface based on a Figma des
 ## Screenshots and Video
 Task video and screenshots are uploaded in a folder name "Task Video & Screen Shots" 
 
-1. [Screenshot 1](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots/ScreenShots)
-2. [Screenshot 2](https://github.com/tejaspalyekar/mtrench/blob/main/task%20video%20%26%20screenshots/screenshot2.png)
+1. [Link to Screenshots](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots/ScreenShots)
+2. [Link to Task Video](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots)
 
 ## How to Run
 
