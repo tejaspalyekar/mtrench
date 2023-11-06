@@ -57,56 +57,55 @@ class _WebScreenState extends State<WebLayout> {
   ];
   String profilevalue = "Admin";
   String data = "";
-  Widget currscreen = const ProjectManagement();
   double onhover = 34;
   double nohover = 30;
   bool profilehover = false;
   bool notifyhover = false;
   void changescreen() {
     setState(() {
-      switch (prevbtn) {
+      switch (currbtn) {
         case 0:
-          currscreen = const Dashboard();
+          currentScreen = const Dashboard();
           break;
         case 1:
-          currscreen = const Employeemonitor();
+          currentScreen = const Employeemonitor();
           break;
         case 2:
-          currscreen = const Productivity();
+          currentScreen = const Productivity();
           break;
         case 3:
-          currscreen = const Employee();
+          currentScreen = const Employee();
           break;
         case 4:
-          currscreen = const TeamScreen();
+          currentScreen = const TeamScreen();
           break;
         case 5:
-          currscreen = const AttendanceScreen();
+          currentScreen = const AttendanceScreen();
           break;
         case 6:
           if (submenu == "Projects") {
-            currscreen = const ProjectsScreen();
+            currentScreen = const ProjectsScreen();
           } else if (submenu == "Task") {
-            currscreen = TaskScreen();
+            currentScreen = TaskScreen();
           } else {
-            currscreen = MyTaskScreen();
+            currentScreen = MyTaskScreen();
           }
 
           break;
         case 7:
-          currscreen = const ChatRoomScreen();
+          currentScreen = const ChatRoomScreen();
           break;
         case 8:
-          currscreen = const CalScreens();
+          currentScreen = const CalScreens();
           break;
         case 9:
-          currscreen = const SettingScreen();
+          currentScreen = const SettingScreen();
           break;
         case 10:
-          currscreen = const HelpScreen();
+          currentScreen = const HelpScreen();
           break;
         case 11:
-          currscreen = const Signout();
+          currentScreen = const Signout();
           break;
       }
     });
@@ -141,12 +140,12 @@ class _WebScreenState extends State<WebLayout> {
                   IconButton(
                       splashRadius: 20,
                       iconSize: 40,
-                      onPressed: () {
-                        
-                      },
+                      onPressed: () {},
                       icon: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Notifications(),));
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Notifications(),
+                            ));
                           },
                           mouseCursor: SystemMouseCursors.click,
                           onHover: (value) {
@@ -155,10 +154,10 @@ class _WebScreenState extends State<WebLayout> {
                             });
                           },
                           child: Image.asset(
-                                 "assets/Notification.png",
-                                 width: notifyhover ? onhover : nohover,
-                                  height: notifyhover ? onhover : nohover,
-                  ))),
+                            "assets/Notification.png",
+                            width: notifyhover ? onhover : nohover,
+                            height: notifyhover ? onhover : nohover,
+                          ))),
                   const SizedBox(
                     width: 10,
                   ),
@@ -242,7 +241,7 @@ class _WebScreenState extends State<WebLayout> {
                 child: Container(
                   padding: const EdgeInsets.only(
                       top: 10, left: 30, right: 20, bottom: 10),
-                  child: currscreen,
+                  child: currentScreen,
                 ),
               ),
             )

@@ -19,7 +19,7 @@ class _MenuState extends State<Menu> {
   bool hover = false;
   @override
   Widget build(BuildContext context) {
-    if (widget.index == prevbtn) {
+    if (widget.index == currbtn) {
       defaultBtnColor = const Color.fromARGB(230, 252, 250, 250);
       borderColor = const Color.fromARGB(255, 137, 139, 255);
       defaulttitleColor = const Color.fromARGB(255, 0, 26, 255);
@@ -52,7 +52,6 @@ class _MenuState extends State<Menu> {
                     rerender: (int val) {
                       widget.rerender!(val);
                     },
-                    
                   )
                 : widget.index == 6
                     ? ReuseableExpansionTitle(
@@ -61,7 +60,6 @@ class _MenuState extends State<Menu> {
                         index: widget.index,
                         rerender: (int val) {
                           widget.rerender!(val);
-
                         },
                       )
                     : TextButton.icon(
@@ -86,7 +84,8 @@ class _MenuState extends State<Menu> {
                             backgroundColor:
                                 MaterialStatePropertyAll(defaultBtnColor)),
                         onPressed: () {
-                          prevbtn = widget.index;
+                          currbtn = widget.index;
+                          submenu = "";
                           widget.rerender!(0);
                         },
                         icon: Image.asset(
@@ -95,9 +94,10 @@ class _MenuState extends State<Menu> {
                           width: 15,
                           height: 15,
                         ),
-
                         label: Padding(
-                          padding: const EdgeInsets.only(left: 4,),
+                          padding: const EdgeInsets.only(
+                            left: 4,
+                          ),
                           child: Text(
                             titlesList[widget.index],
                             style: TextStyle(

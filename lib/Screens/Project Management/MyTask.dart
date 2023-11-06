@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mtrench/DataModel/menuItems.dart';
 import 'package:mtrench/widgets/TaskCards.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class MyTaskScreen extends StatelessWidget {
   MyTaskScreen({super.key});
   Color themecolor = const Color.fromARGB(212, 114, 114, 133);
-
+  PageController taskpagecontroller = PageController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -79,7 +80,10 @@ class MyTaskScreen extends StatelessWidget {
               height: 0.5,
             ),
         const SizedBox(height: 20,),
-         Row(
+
+           LayoutBuilder(builder: (context, constraints) {
+            return constraints.maxWidth > 870 ?
+            Row(
            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 235, 185, 111), title: "To-Do-Task", tasklist: const ["Interview","Crazy 8"],userlist: [[],[]],)),
@@ -90,7 +94,64 @@ class MyTaskScreen extends StatelessWidget {
               const SizedBox(width: 30,),
               Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 43, 255, 0),title: "Completed", tasklist: const ["Question for Interview"], userlist: [[],[]],)),
             ],
-          ),
+          ):
+          constraints.maxWidth > 580 ? Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+              Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 235, 185, 111), title: "To-Do-Task", tasklist: const ["Interview","Crazy 8"],userlist: [[],[]],)),
+              const SizedBox(width: 30,),
+              Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 114, 0, 190), title: "InProgress", tasklist: const ["Survey"],userlist: [[]],)),
+             ],),
+              const SizedBox(height: 20,),
+              Container(
+                height: 1,
+                color: themecolor,
+              ),
+              const SizedBox(height: 20,),
+              Row(children: [
+              Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 255, 0, 0), title: "Overdue", tasklist: const ["Data Collection"],userlist: [[]],)),
+              const SizedBox(width: 30,),
+              Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 43, 255, 0),title: "Completed", tasklist: const ["Question for Interview"], userlist: [[],[]],)),
+              ],)
+            ],
+          ) : Column(
+            children: [
+              SmoothPageIndicator(
+                onDotClicked: (index) {
+                taskpagecontroller.animateToPage(index,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeIn);
+                },
+            controller: taskpagecontroller,
+            count: 4,
+            effect: const ScaleEffect(
+                activeStrokeWidth: 0.1,
+                dotWidth: 8,
+                dotHeight: 8,
+                activeDotColor: Color.fromARGB(255, 4, 27, 233),
+                dotColor: Color.fromARGB(255, 156, 156, 156))),
+              const SizedBox(height: 20,),
+              SingleChildScrollView(
+                child: SizedBox(
+                  height: 600,
+                  child: PageView(
+                    controller: taskpagecontroller,
+                    children: [
+                       Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 235, 185, 111), title: "To-Do-Task", tasklist: const ["Interview","Crazy 8"],userlist: [[],[]],)),
+                        Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 114, 0, 190), title: "InProgress", tasklist: const ["Survey"],userlist: [[]],)),
+                        Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 255, 0, 0), title: "Overdue", tasklist: const ["Data Collection"],userlist: [[]],)),
+                        Expanded(child: TaskCards(iconcolor: Color.fromARGB(255, 43, 255, 0),title: "Completed", tasklist: const ["Question for Interview"], userlist: [[],[]],)),
+                     ],
+                  ),
+                ),
+              ),
+              
+            
+            ],
+          ) ;
+          },) 
       ],
     );
   }

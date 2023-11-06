@@ -26,31 +26,34 @@ class TaskCards extends StatelessWidget {
               border:
                   Border.all(color: const Color.fromARGB(192, 96, 106, 255)),
               borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 30,
-                width: 8,
-                decoration: BoxDecoration(
-                    color: iconcolor,
-                    borderRadius: BorderRadius.circular(100)),
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: Text(
-                  title,
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.poppins(
-                      fontSize: 24,
-                      color: Color.fromARGB(192, 0, 17, 255),
-                      fontWeight: FontWeight.w500),
+          child: Padding(
+            padding: EdgeInsets.only(left: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 30,
+                  width: 8,
+                  decoration: BoxDecoration(
+                      color: iconcolor,
+                      borderRadius: BorderRadius.circular(100)),
                 ),
-              )
-            ],
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: Text(
+                    title,
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                        fontSize: 24,
+                        color: Color.fromARGB(192, 0, 17, 255),
+                        fontWeight: FontWeight.w500),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         const SizedBox(

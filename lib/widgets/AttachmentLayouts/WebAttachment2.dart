@@ -5,16 +5,19 @@ class WebAttachMentLayout2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Attachments(attachmentno: 0),
-        SizedBox(height: 20,),
-        Attachments(attachmentno: 1), 
-        SizedBox(height: 20,),
-        Attachments(attachmentno: 2)
-      ],
+    return Container(
+      margin: EdgeInsets.only(left: 120),
+      child: Column(
+        
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Attachments(attachmentno: 0),
+          SizedBox(height: 20,),
+          Attachments(attachmentno: 1), 
+          SizedBox(height: 20,),
+          Attachments(attachmentno: 2)
+        ],
+      ),
     );
   }
 }

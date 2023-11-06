@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtrench/Screens/Project%20Management/Task.dart';
 
 List titlesList = [
   "Dashboard",
@@ -16,27 +17,29 @@ List titlesList = [
 ];
 
 List iconsList = [
-    "assets/MenuIcons/grid_view.png",
-    "assets/MenuIcons/tv.png",
-    "assets/MenuIcons/query_stats.png",
-    "assets/MenuIcons/group.png",
-    "assets/MenuIcons/groups.png",
-    "assets/MenuIcons/productivity.png",
-    "assets/MenuIcons/folder_managed.png",
-    "assets/MenuIcons/chat.png",
-    "assets/MenuIcons/calendar_month.png",
-    "assets/MenuIcons/settings.png",
-    "assets/MenuIcons/help.png",
-    "assets/MenuIcons/logout.png",
+  "assets/MenuIcons/grid_view.png",
+  "assets/MenuIcons/tv.png",
+  "assets/MenuIcons/query_stats.png",
+  "assets/MenuIcons/group.png",
+  "assets/MenuIcons/groups.png",
+  "assets/MenuIcons/productivity.png",
+  "assets/MenuIcons/folder_managed.png",
+  "assets/MenuIcons/chat.png",
+  "assets/MenuIcons/calendar_month.png",
+  "assets/MenuIcons/settings.png",
+  "assets/MenuIcons/help.png",
+  "assets/MenuIcons/logout.png",
 ];
-int prevbtn = 6;
+int currbtn = 6;
 
-String submenu = "";
+String submenu = "Task";
 
-List assigneeimage = [ 
-      "assets/Assignee/1.png",
-      "assets/Assignee/2.png",
-      "assets/Assignee/3.png",
-      "assets/Assignee/4.png",
-      "assets/ProfilePic.png",  
-  ];
+Widget currentScreen = TaskScreen();
+
+List assigneeimage = [
+  "assets/Assignee/1.png",
+  "assets/Assignee/2.png",
+  "assets/Assignee/3.png",
+  "assets/Assignee/4.png",
+  "assets/ProfilePic.png",
+];

@@ -57,57 +57,56 @@ class _MobileState extends State<MobileLayout> {
   ];
   String profilevalue = "Admin";
   String data = "";
-  Widget currscreen = const ProjectManagement();
   double onhover = 34;
   double nohover = 30;
   bool profilehover = false;
   bool notifyhover = false;
   void changescreen() {
     setState(() {
-      switch (prevbtn) {
+      switch (currbtn) {
         case 0:
-          currscreen = const Dashboard();
+          currentScreen = const Dashboard();
           break;
         case 1:
-          currscreen = const Employeemonitor();
+          currentScreen = const Employeemonitor();
           break;
         case 2:
-          currscreen = const Productivity();
+          currentScreen = const Productivity();
           break;
         case 3:
-          currscreen = const Employee();
+          currentScreen = const Employee();
           break;
         case 4:
-          currscreen = const TeamScreen();
+          currentScreen = const TeamScreen();
           break;
         case 5:
-          currscreen = const AttendanceScreen();
+          currentScreen = const AttendanceScreen();
           break;
         case 6:
-          currscreen = const ProjectManagement();
+          currentScreen = const ProjectManagement();
 
           if (submenu == "Projects") {
-            currscreen = const ProjectsScreen();
+            currentScreen = const ProjectsScreen();
           } else if (submenu == "Task") {
-            currscreen = TaskScreen();
+            currentScreen = TaskScreen();
           } else {
-            currscreen = MyTaskScreen();
+            currentScreen = MyTaskScreen();
           }
           break;
         case 7:
-          currscreen = const ChatRoomScreen();
+          currentScreen = const ChatRoomScreen();
           break;
         case 8:
-          currscreen = const CalScreens();
+          currentScreen = const CalScreens();
           break;
         case 9:
-          currscreen = const SettingScreen();
+          currentScreen = const SettingScreen();
           break;
         case 10:
-          currscreen = const HelpScreen();
+          currentScreen = const HelpScreen();
           break;
         case 11:
-          currscreen = const Signout();
+          currentScreen = const Signout();
           break;
       }
     });
@@ -211,13 +210,12 @@ class _MobileState extends State<MobileLayout> {
                     index: index,
                     rerender: (int val) {
                       changescreen();
-                      if (prevbtn != 1 && prevbtn != 6) {
+                      if (currbtn != 1 && currbtn != 6) {
                         Scaffold.of(context).closeDrawer();
                       }
-                      if(val == 1){
+                      if (val == 1) {
                         Scaffold.of(context).closeDrawer();
                       }
-                      
                     },
                   );
                 },
@@ -232,7 +230,7 @@ class _MobileState extends State<MobileLayout> {
           child: Container(
             padding: EdgeInsets.all(10),
             width: double.infinity,
-            child: currscreen,
+            child: currentScreen,
           ),
         ),
       ),

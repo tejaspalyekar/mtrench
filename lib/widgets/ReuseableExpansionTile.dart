@@ -30,6 +30,7 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
   bool hover = false;
   Color onhover = const Color.fromARGB(146, 187, 187, 187);
   Color backcolor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     if (widget.index == 1) {
@@ -37,6 +38,7 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
     } else {
       itemidx = 1;
     }
+
     return ExpansionPanelList(
       backcolor: backcolor,
       index: widget.index,
@@ -57,16 +59,38 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
                 ),
                 child: InkWell(
                   onHover: (value) {
-                   
                     setState(() {
                       hover = value;
-                     value ? backcolor = onhover : backcolor = Colors.white;
+                      value ? backcolor = onhover : backcolor = Colors.white;
                     });
                   },
                   onTap: () {
-                    submenu = expansionpanelitems[itemidx][0];
-                    prevbtn = widget.index;
-                    widget.rerender!(3);
+                    submenu = itemidx == 0
+                        ? submenu == ""
+                            ? ""
+                            : (submenu == "Projects" ||
+                                    submenu == "Task" ||
+                                    submenu == "My Task")
+                                ? submenu
+                                : expansionpanelitems[itemidx][0]
+                        : submenu != ""
+                            ? submenu
+                            : "";
+                    if (itemidx != 1 &&
+                        submenu != expansionpanelitems[itemidx][0] &&
+                        itemidx == 0 &&
+                        submenu != "") {
+                      if (itemidx == 0 && submenu == "Projects" ||
+                          submenu == "Task" ||
+                          submenu == "My Task") {
+                        currbtn = currbtn;
+                        widget.rerender!(3);
+                      } else {
+                        currbtn = widget.index;
+                        widget.rerender!(3);
+                      }
+                    }
+                    
                     setState(() {
                       if (expanded) {
                         expanded = false;
@@ -76,22 +100,21 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
                     });
                   },
                   child: Container(
-   
                     color: hover ? onhover : Colors.white,
                     child: Center(
                       child: Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 6),
+                            padding: const EdgeInsets.only(left: 5),
                             child: Image.asset(
                               iconsList[widget.index],
                               color: widget.titlecolor,
-                              width: 15,
-                              height: 15,
+                              width: 13,
+                              height: 13,
                             ),
                           ),
                           const SizedBox(
-                            width: 15,
+                            width: 14,
                           ),
                           Text(titlesList[widget.index],
                               style: TextStyle(
@@ -108,7 +131,6 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
             body: Column(
               children: [
                 Container(
-                  
                   padding: const EdgeInsets.only(top: 10),
                   height: itemidx == 0 ? 60 : 110,
                   width: 200,
@@ -127,14 +149,15 @@ class _ReuseableExpansionTitleState extends State<ReuseableExpansionTitle> {
                                       color: expansionpanelitems[itemidx]
                                                   [index] ==
                                               submenu
-                                          ? Color.fromARGB(133, 112, 112, 112)
+                                          ? const Color.fromARGB(
+                                              133, 112, 112, 112)
                                           : const Color.fromARGB(
                                               255, 255, 255, 255))),
                                   alignment: Alignment.topLeft),
                               label: Text(expansionpanelitems[itemidx][index],
                                   style: const TextStyle(color: Colors.black)),
                               onPressed: () {
-                                prevbtn = widget.index;
+                                currbtn = widget.index;
                                 submenu = expansionpanelitems[itemidx][index];
                                 widget.rerender!(1);
                               },
