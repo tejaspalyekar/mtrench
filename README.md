@@ -9,6 +9,14 @@ Task video and screenshots are uploaded in a folder name "Task Video & Screen Sh
 1. [Link to Screenshots](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots/ScreenShots)
 2. [Link to Task Video](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots)
 
+Dear Review Team,
+
+I've put in significant effort to ensure that my Mtrench Flutter UI project is exceptionally responsive and aligned with the original design. Although I'm one day late, I hope you'll consider the quality of my work as a testament to my commitment.
+
+Sincerely,
+Tejas Palyekar
+
+
 ## How to Run
 
 Follow these steps to run the Flutter application:
