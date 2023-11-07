@@ -1,10 +1,23 @@
 
-
----
-
 # Mtrench Flutter UI
 
-This project replicates a responsive Flutter user interface based on a Figma design for the Mtrench job application.
+This project replicates a responsive Flutter user interface based on a Figma design for the Mtrench internship application.
+
+## Screenshots and Video
+Task video and screenshots are uploaded in a folder name "Task Video & Screen Shots" 
+
+## Video Link : https://youtu.be/UHcBNozfyPg
+
+1. [Link to Screenshots](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots/ScreenShots)
+2. [Link to Task Video](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots)
+
+Dear Review Team,
+
+I've put in significant effort to ensure that my Mtrench Flutter UI project is exceptionally responsive and aligned with the original design. Although I'm one day late, I hope you'll consider the quality of my work as a testament to my commitment.
+
+Sincerely,
+Tejas Palyekar
+
 
 ## How to Run
 
@@ -39,11 +52,3 @@ All project dependencies are listed in the `pubspec.yaml` file. Running `flutter
 ## Testing Responsiveness and Interactivity
 
 To ensure the responsiveness and interactivity of the Flutter UI, test it on various screen sizes and orientations using an emulator or a physical device.
-
-## Screenshots and Video
-
-For evaluation purposes, capture screenshots or record a video demonstrating the responsiveness and interactivity of your Flutter UI compared to the Figma design. Include these files in your GitHub repository.
-
----
-
-Feel free to use and customize this README as needed for your project. Good luck with your Flutter UI task!
