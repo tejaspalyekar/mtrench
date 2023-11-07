@@ -9,7 +9,7 @@ Task video and screenshots are uploaded in a folder name "Task Video & Screen Sh
 ## Video Link : https://youtu.be/UHcBNozfyPg
 
 1. [Link to Screenshots](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots/ScreenShots)
-2. [Link to Task Video](https://github.com/tejaspalyekar/mtrench/tree/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots)
+2. [Link to Task Video](https://github.com/tejaspalyekar/mtrench/blob/cbf50127a20828944cd7b8d7932be07fec8c9217/Task%20Video%20%26%20Screen%20shots/TaskVideo.mp4)
 
 Dear Review Team,
 
